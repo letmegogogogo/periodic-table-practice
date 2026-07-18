@@ -1,0 +1,121 @@
+/* 互動週期表：讓題目與可點選元素在一般筆電視窗同時可見 */
+@media (min-width: 761px) {
+  #tableView.active {
+    padding-top: 12px;
+  }
+
+  #tableView.mode-play .view-nav,
+  #tableView.mode-play .legend {
+    display: none;
+  }
+
+  #tableView .table-mode-tabs {
+    padding-bottom: 8px;
+  }
+
+  #tableView .table-mode-tabs button {
+    padding: 7px 15px;
+    font-size: 13px;
+  }
+
+  #tableView .table-mission {
+    min-height: 70px;
+    padding: 10px 18px;
+    margin-bottom: 8px;
+  }
+
+  #tableView .table-mission h2 {
+    margin: 1px 0;
+    font-size: 23px;
+    line-height: 1.2;
+  }
+
+  #tableView .table-mission p {
+    font-size: 12px;
+  }
+
+  #tableView .mission-score span {
+    padding: 5px 12px;
+  }
+
+  #tableView .mission-score b {
+    display: inline;
+    margin-left: 4px;
+    font-size: 18px;
+  }
+
+  #tableView .interactive-actions {
+    height: 34px;
+    margin: 0 0 6px;
+  }
+
+  #tableView .interactive-actions button {
+    min-height: 34px;
+    padding: 5px 13px;
+    font-size: 12px;
+  }
+
+  #tableView .periodic-table {
+    min-width: 880px;
+    grid-template-rows: repeat(9, 46px);
+    gap: 3px;
+  }
+
+  #tableView .element-cell {
+    min-width: 0;
+    padding: 2px;
+    border-radius: 5px;
+  }
+
+  #tableView .element-cell small {
+    left: 3px;
+    top: 0;
+    font-size: 7px;
+  }
+
+  #tableView .element-cell strong {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  #tableView .element-cell span {
+    font-size: 8px;
+    line-height: 1.1;
+  }
+
+  #tableView .element-cell input {
+    height: 28px;
+    font-size: 11px;
+  }
+
+  #tableView .periodic-scroll {
+    padding-bottom: 4px;
+  }
+
+  #tableView .element-info-card {
+    position: fixed;
+    right: 20px;
+    bottom: 18px;
+    z-index: 30;
+    width: min(430px, calc(100vw - 40px));
+    padding: 14px 16px;
+  }
+
+  #tableView .element-info-card .element-info-grid {
+    margin-top: 8px;
+  }
+}
+
+@media (max-height: 720px) and (min-width: 761px) {
+  .topbar { height: 62px; }
+  #tableView .table-mission { min-height: 60px; }
+  #tableView .periodic-table { grid-template-rows: repeat(9, 41px); }
+}
+
+@media (max-width: 760px) {
+  #tableView.mode-play .view-nav,
+  #tableView.mode-play .legend { display: none; }
+  #tableView .table-mission { margin-bottom: 8px; }
+  #tableView .periodic-table { grid-template-rows: repeat(9, 52px); gap: 3px; }
+  #tableView .interactive-actions { margin: 0 0 8px; }
+}
