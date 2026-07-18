@@ -1,0 +1,28 @@
+# 元素探險隊｜國中元素週期表練習
+
+純前端、免登入的繁體中文元素練習網站，可直接離線開啟或部署至 GitHub Pages。
+
+## 使用方式
+
+1. 直接開啟 `index.html`。
+2. 在首頁選擇元素範圍及題數。
+3. 選擇名稱轉符號、符號轉名稱、週期表填空、選擇題或錯題重練。
+4. 錯題會自動保存在目前瀏覽器的 `localStorage`，不會上傳到網路。
+
+## 部署至 GitHub Pages
+
+1. 將這個資料夾內的所有檔案上傳至 GitHub repository。
+2. 開啟 repository 的 **Settings → Pages**。
+3. 在 **Build and deployment** 選擇 **Deploy from a branch**。
+4. 選擇主要分支及 `/ (root)` 後儲存。
+5. 等待 GitHub 顯示網站網址即可。
+
+## 檔案說明
+
+- `index.html`：所有頁面結構
+- `style.css`：桌面與手機版外觀
+- `elements.js`：118 個元素資料
+- `quiz.js`：出題、計分、錯題本與瀏覽器儲存
+- `periodic-table.js`：週期表填空與判定
+
+本網站不使用外部套件或網路服務。

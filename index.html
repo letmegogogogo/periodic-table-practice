@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="description" content="國中元素週期表互動練習：元素符號、中文名稱、週期表填空、選擇題與錯題重練。">
+  <title>元素探險隊｜國中元素週期表練習</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="brand" data-go-home aria-label="回首頁"><span class="brand-mark">E</span><span>元素探險隊<small>國中自然互動練習</small></span></button>
+    <button class="stats-pill" id="headerStats" data-go-mistakes>錯題本 <strong>0</strong></button>
+  </header>
+
+  <main>
+    <section id="homeView" class="view active">
+      <div class="hero">
+        <div><p class="eyebrow">PERIODIC TABLE LAB</p><h1>把元素記憶，<br><em>變成一場探險。</em></h1><p>從名稱、符號到週期表位置，一次練熟國中自然必備元素。</p></div>
+        <div class="hero-elements" aria-hidden="true"><span class="tile h"><b>1</b><strong>H</strong><small>氫</small></span><span class="tile o"><b>8</b><strong>O</strong><small>氧</small></span><span class="tile na"><b>11</b><strong>Na</strong><small>鈉</small></span></div>
+      </div>
+
+      <section class="setup-card" aria-labelledby="setupTitle">
+        <div><p class="section-kicker">練習設定</p><h2 id="setupTitle">今天想挑戰哪些元素？</h2></div>
+        <div class="settings-grid">
+          <label>練習範圍<select id="rangeSelect"><option value="junior">國中常用元素</option><option value="first20">前 20 號元素</option><option value="metal">金屬元素</option><option value="nonmetal">非金屬元素</option><option value="noble">惰性氣體</option><option value="all">全部 118 個元素</option><option value="custom">自訂元素範圍</option></select></label>
+          <fieldset><legend>題目數量</legend><div class="segmented"><label><input type="radio" name="count" value="10" checked><span>10 題</span></label><label><input type="radio" name="count" value="20"><span>20 題</span></label><label><input type="radio" name="count" value="50"><span>50 題</span></label></div></fieldset>
+        </div>
+        <div id="customPanel" class="custom-panel" hidden><div class="custom-head"><strong>選擇要練習的元素</strong><button class="text-btn" id="toggleCustom">全選／取消</button></div><div id="customElements" class="custom-elements"></div></div>
+      </section>
+
+      <section class="mode-section"><div class="section-heading"><div><p class="section-kicker">選擇模式</p><h2>開始今天的練習</h2></div><p>每一次答題，都離滿分更近一點。</p></div>
+        <div class="mode-grid">
+          <button class="mode-card coral" data-mode="nameToSymbol"><span class="mode-icon">Aa</span><span><small>基本記憶</small><strong>元素名稱 → 符號</strong><em>看到「鈉」，你知道是 Na 嗎？</em></span><b>開始 →</b></button>
+          <button class="mode-card teal" data-mode="symbolToName"><span class="mode-icon">Fe</span><span><small>反向挑戰</small><strong>元素符號 → 名稱</strong><em>看到 Fe，寫出正確中文名稱。</em></span><b>開始 →</b></button>
+          <button class="mode-card blue" data-mode="table"><span class="mode-icon">▦</span><span><small>位置記憶</small><strong>週期表填空</strong><em>在正確位置填入符號或名稱。</em></span><b>開始 →</b></button>
+          <button class="mode-card amber" data-mode="choice"><span class="mode-icon">✓</span><span><small>觀念理解</small><strong>國中自然選擇題</strong><em>元素、原子與週期表綜合挑戰。</em></span><b>開始 →</b></button>
+          <button class="mode-card purple" data-mode="mistakes"><span class="mode-icon">↻</span><span><small>精準複習</small><strong>錯題重新練習</strong><em id="mistakeText">目前沒有錯題，繼續保持！</em></span><b>複習 →</b></button>
+        </div>
+      </section>
+    </section>
+
+    <section id="quizView" class="view panel-view">
+      <nav class="view-nav"><button class="back-btn" data-go-home>← 返回首頁</button><span id="quizModeLabel">元素練習</span></nav>
+      <div class="progress-wrap"><div><span id="progressText">第 1 / 10 題</span><span id="scoreText">正確 0　錯誤 0</span></div><div class="progress"><i id="progressBar"></i></div></div>
+      <article class="question-card">
+        <span class="question-tag" id="questionTag">元素符號</span><h2 id="questionText">載入題目中…</h2>
+        <div id="answerArea"></div><div id="feedback" class="feedback" hidden></div>
+        <div class="question-actions"><button class="primary-btn" id="checkBtn">檢查答案</button><button class="secondary-btn" id="nextBtn" hidden>下一題 →</button></div>
+      </article>
+    </section>
+
+    <section id="tableView" class="view table-view">
+      <nav class="view-nav"><button class="back-btn" data-go-home>← 返回首頁</button><span>週期表填空</span></nav>
+      <div class="table-toolbar"><div><p class="section-kicker">PERIODIC TABLE</p><h2>週期表填空挑戰</h2><p>空格可填元素符號或中文名稱。</p></div><div class="toolbar-actions"><button class="secondary-btn" id="clearTable">清空答案</button><button class="secondary-btn" id="showTable">顯示全部</button><button class="secondary-btn" id="newTable">重新產生</button><button class="primary-btn" id="checkTable">檢查答案</button></div></div>
+      <div class="legend"><span><i class="legend-dot correct"></i>答對</span><span><i class="legend-dot wrong"></i>答錯</span><span><i class="legend-dot blank"></i>待填</span></div>
+      <div class="periodic-scroll"><div id="periodicTable" class="periodic-table"></div></div>
+      <div id="tableResult" class="table-result" hidden></div>
+    </section>
+
+    <section id="resultView" class="view panel-view"><article class="result-card"><div class="result-badge">完成！</div><h2 id="resultTitle">練習完成</h2><div class="score-ring"><strong id="resultRate">0%</strong><span>正確率</span></div><div class="result-stats"><span><b id="resultCorrect">0</b>答對</span><span><b id="resultWrong">0</b>答錯</span></div><div class="result-actions"><button class="primary-btn" id="retryBtn">再練一次</button><button class="secondary-btn" data-go-home>回到首頁</button></div></article></section>
+  </main>
+  <footer>元素探險隊 · 資料儲存在這台裝置的瀏覽器中</footer>
+  <script src="elements.js"></script><script src="periodic-table.js"></script><script src="quiz.js"></script>
+</body>
+</html>
