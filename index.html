@@ -51,11 +51,23 @@
       </article>
     </section>
 
-    <section id="tableView" class="view table-view">
+    <section id="tableView" class="view table-view mode-play">
+      <div class="table-mode-tabs" id="tableModeTabs" aria-label="互動週期表模式">
+        <button class="active" data-table-mode="find">🎯 找元素</button>
+        <button data-table-mode="explore">🔎 探索資訊</button>
+        <button data-table-mode="category">🎨 分類挑戰</button>
+        <button data-table-mode="fill">✏️ 填空練習</button>
+      </div>
+      <section class="table-mission" id="tableMission">
+        <div><span class="mission-label" id="tableMissionLabel">找元素</span><h2 id="tablePrompt">請在週期表中找出指定元素</h2><p id="tableSubPrompt">點擊你認為正確的元素格。</p></div>
+        <div class="mission-score"><span>答對 <b id="tableCorrect">0</b></span><span>答錯 <b id="tableWrong">0</b></span></div>
+      </section>
       <nav class="view-nav"><button class="back-btn" data-go-home>← 返回首頁</button><span>週期表填空</span></nav>
       <div class="table-toolbar"><div><p class="section-kicker">PERIODIC TABLE</p><h2>週期表填空挑戰</h2><p>空格可填元素符號或中文名稱。</p></div><div class="toolbar-actions"><button class="secondary-btn" id="clearTable">清空答案</button><button class="secondary-btn" id="showTable">顯示全部</button><button class="secondary-btn" id="newTable">重新產生</button><button class="primary-btn" id="checkTable">檢查答案</button></div></div>
       <div class="legend"><span><i class="legend-dot correct"></i>答對</span><span><i class="legend-dot wrong"></i>答錯</span><span><i class="legend-dot blank"></i>待填</span></div>
+      <div class="interactive-actions" id="playActions"><button class="secondary-btn" id="tableHint">💡 顯示提示</button><button class="secondary-btn" id="skipTable">跳過這題 →</button></div>
       <div class="periodic-scroll"><div id="periodicTable" class="periodic-table"></div></div>
+      <aside id="tableInfoCard" class="element-info-card" hidden aria-live="polite"></aside>
       <div id="tableResult" class="table-result" hidden></div>
     </section>
 

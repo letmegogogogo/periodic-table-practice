@@ -70,5 +70,5 @@ function initCustom(){const box=$('#customElements');box.innerHTML=elements.map(
 $$('[data-go-home]').forEach(b=>b.onclick=()=>showView('homeView'));$$('[data-go-mistakes]').forEach(b=>b.onclick=()=>startMode('mistakes'));$$('[data-mode]').forEach(b=>b.onclick=()=>startMode(b.dataset.mode));
 $('#rangeSelect').onchange=e=>$('#customPanel').hidden=e.target.value!=='custom';$('#toggleCustom').onclick=()=>{const boxes=$$('#customElements input'),all=boxes.every(x=>x.checked);boxes.forEach(x=>x.checked=!all)};
 $('#checkBtn').onclick=checkAnswer;$('#nextBtn').onclick=nextQuestion;$('#retryBtn').onclick=()=>startMode(lastMode);
-$('#clearTable').onclick=PeriodicTable.clear;$('#showTable').onclick=()=>PeriodicTable.render(true);$('#newTable').onclick=()=>PeriodicTable.generate(getPool().length?getPool():elements.slice(0,20));$('#checkTable').onclick=PeriodicTable.check;
+$('#clearTable').onclick=PeriodicTable.clear;$('#showTable').onclick=()=>PeriodicTable.render(true);$('#newTable').onclick=()=>PeriodicTable.setMode('fill');$('#checkTable').onclick=PeriodicTable.check;
 initCustom();updateMistakeUI();
