@@ -48,7 +48,7 @@ const PeriodicTable=(()=>{
     else{wrong++;document.getElementById('tableSubPrompt').textContent=`再找找看，${e.name}不是這題的答案。`;addMistake(e,'tableClick')}
     updateScore();updateMistakeUI();
   }
-  function showInfo(e){const card=document.getElementById('tableInfoCard');card.hidden=false;card.innerHTML=`<div class="info-head"><div class="info-symbol">${e.symbol}</div><div><h3>${e.name} <small>${e.zhuyin}</small></h3><p>原子序 ${e.number} · ${e.category}</p></div></div><div class="element-info-grid"><span><b>元素符號</b><br>${e.symbol}</span><span><b>週期位置</b><br>第 ${e.period>7?e.period-2:e.period} 週期 · 第 ${e.group} 族</span><span><b>常見用途</b><br>${e.use}</span></div>`;card.scrollIntoView({behavior:'smooth',block:'nearest'})}
+  function showInfo(e){const card=document.getElementById('tableInfoCard');card.hidden=false;card.innerHTML=`<div class="info-with-visual">${useVisualHTML(e)}<div class="info-copy"><div class="info-head"><div class="info-symbol">${e.symbol}</div><div><h3>${e.name} <small>${e.zhuyin}</small></h3><p>原子序 ${e.number} · ${e.category}</p></div></div><div class="element-info-grid"><span><b>元素符號</b><br>${e.symbol}</span><span><b>週期位置</b><br>第 ${e.period>7?e.period-2:e.period} 週期 · 第 ${e.group} 族</span><span><b>常見用途</b><br>${e.use}</span></div></div></div>`;card.scrollIntoView({behavior:'smooth',block:'nearest'})}
   function hint(){
     if(mode==='explore'){document.getElementById('tableSubPrompt').textContent='試著點一格看看，每個元素都有自己的資訊卡！';return}
     if(mode==='fill'){render(true);return}

@@ -12,3 +12,20 @@ const ELEMENT_ROWS = [
 const elements = ELEMENT_ROWS.map((r,i)=>({number:i+1,symbol:r[0],name:r[1],zhuyin:r[2],category:r[3],use:r[4],period:r[5],group:r[6]}));
 const JUNIOR_NUMBERS=[1,2,3,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,24,25,26,27,28,29,30,35,47,50,53,54,74,78,79,80,82,92];
 const METAL_CATEGORIES=['鹼金屬','鹼土金屬','過渡金屬','貧金屬','鑭系元素','錒系元素'];
+
+function getUseVisual(element){
+  const text=element.use;
+  const rules=[
+    ['balloon',/氣球/],['battery',/電池|電容器/],['medical',/呼吸|醫療|醫學|麻醉|核磁|X 光|癌症治療/],
+    ['jewelry',/飾品|珠寶|硬幣|金|銀/],['lamp',/燈|雷射|螢光|霓虹|光電|閃光/],['chip',/晶片|半導體|電子|觸控|光纖|電觸點/],
+    ['tools',/鋼|建築|工具|電線|水泥|電鍍|防鏽|焊接|合金|切削|引擎/],['fertilizer',/肥料|植物/],
+    ['fireworks',/煙火|火柴|打火石/],
+    ['research',/核|原子鐘|科學研究|中子|放射|輻射|太空電源/],['aerospace',/航太|太空|飛機|噴射/]
+  ];
+  const match=rules.find(([,pattern])=>pattern.test(text));
+  return match?match[0]:'lab';
+}
+function useVisualHTML(element){
+  const visual=getUseVisual(element);
+  return `<div class="use-visual use-${visual}" role="img" aria-label="${element.name}的常見用途：${element.use}"><span>生活中的${element.name}</span></div>`;
+}

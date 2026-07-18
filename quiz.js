@@ -60,7 +60,7 @@ function checkAnswer(){
  if(q.o)$$('.choice-option').forEach(b=>{if(normalize(b.dataset.answer)===normalize(q.a))b.classList.add('correct');else if(b.classList.contains('selected'))b.classList.add('wrong')});
  const f=$('#feedback');f.hidden=false;f.className='feedback '+(ok?'correct':'wrong');
  const e=q.element;f.innerHTML=`<strong>${ok?'✓ 回答正確！':'✕ 回答錯誤，正確答案是 '+q.a}</strong>${e?`<div class="detail"><span>元素名稱：${e.name}（${e.zhuyin}）</span><span>原子序：${e.number}</span><span>分類：${e.category}</span><span>常見用途：${e.use}</span></div>`:q.why?`<div class="detail"><span>${q.why}</span></div>`:''}`;
- if(e){if(ok&&state.mode==='mistakes')removeMistake(e.number,q.type);if(!ok)addMistake(e,q.type)}
+ if(e){f.insertAdjacentHTML('beforeend',useVisualHTML(e));if(ok&&state.mode==='mistakes')removeMistake(e.number,q.type);if(!ok)addMistake(e,q.type)}
  $('#scoreText').textContent=`正確 ${state.correct}　錯誤 ${state.wrong}`;$('#checkBtn').hidden=true;$('#nextBtn').hidden=false;$('#nextBtn').textContent=state.index===state.questions.length-1?'查看結果 →':'下一題 →';updateMistakeUI();
 }
 function nextQuestion(){if(!state.answered)return;if(++state.index>=state.questions.length)return showResult();renderQuestion()}
